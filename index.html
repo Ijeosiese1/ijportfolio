@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bamanosi Ijeosiese - Portfolio</title>
+    <!-- Link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Link to Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" type="image/png" sizes="32x32" href="ij tech.jpg">
+    <!-- Embedded CSS -->
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4; /* Light mode default */
+            color: #333; /* Light mode default text */
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for dark mode */
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #1a202c; /* Dark background */
+            color: #e2e8f0; /* Light text for dark mode */
+        }
+
+        body.dark-mode .main-header {
+            background-color: #2d3748;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+        }
+
+        body.dark-mode .main-header .logo a,
+        body.dark-mode .main-nav ul li a { /* Text in header nav links */
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .menu-toggle span { /* Hamburger icon lines */
+            background-color: #e2e8f0;
+        }
+
+        body.dark-mode .main-nav {
+            background-color: #2d3748;
+        }
+
+        body.dark-mode .main-nav ul li a.active,
+        body.dark-mode .main-nav ul li a:hover {
+            color: #7B68EE;
+            border-color: #7B68EE;
+        }
+        
+        /* This hero section is for light mode and has the background image. */
+        .hero-section {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)),
+                     url("o.png") no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 100px 0;
+            min-height: calc(100vh - 80px); /* Adjust based on header height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 -5px 10px rgba(0,0,0,0.1);
+        }
+
+        /* This is the new dark mode hero section that overrides the light mode styles. */
+        body.dark-mode .hero-section {
+            background: linear-gradient(rgba(26, 32, 44, 0.8), rgba(26, 32, 44, 0.8)),
+                        url('ij.png') no-repeat center center/cover;
+            box-shadow: inset 0 -5px 10px rgba(0,0,0,0.3);
+        }
+
+        body.dark-mode .hero-content h2,
+        body.dark-mode .hero-content .highlight {
+            color: #e2e8f0; /* Ensure heading is light */
+        }
+
+        body.dark-mode .hero-content .tagline,
+        body.dark-mode .hero-content .description {
+            color: #cbd5e0; /* Slightly darker light text for contrast */
+        }
+
+        body.dark-mode .btn-secondary {
+            color: #7B68EE;
+            border-color: #7B68EE;
+        }
+
+        body.dark-mode .btn-secondary:hover {
+            background-color: #7B68EE;
+            color: #fff;
+        }
+
+        body.dark-mode .features-section {
+            background-color: #2d3748;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        body.dark-mode .features-section h3,
+        body.dark-mode .feature-item h4 {
+            color: #e2e8f0; /* Ensure headings are light */
+        }
+
+        body.dark-mode .feature-item {
+            background-color: #4a5568; /* Darker background for feature items */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        body.dark-mode .feature-item p {
+            color: #cbd5e0; /* Light text for feature item descriptions */
+        }
+
+        body.dark-mode .main-footer {
+            background-color: #2d3748;
+            color: #a0aec0; /* Light text for footer */
+        }
+
+        body.dark-mode .main-footer .social-links .bx { /* Boxicon social icons in dark mode */
+            color: #a0aec0; /* A lighter gray for visibility */
+        }
+        
+        /* Basic Container for centering content */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* Header Styles */
+        .main-header {
+            background-color: #2c3e50; /* Dark blue/gray */
+            color: #fff;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex; /* Use flex for header items */
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: nowrap; /* Prevent wrapping on large screens */
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: nowrap; /* Prevent wrapping on large screens */
+        }
+
+        .logo {
+            margin: 0;
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .logo a:hover {
+            color: #7B68EE; /* Medium Slate Blue */
+        }
+
+        /* Navigation Styles */
+        .main-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .main-nav ul li {
+            margin-left: 30px;
+        }
+
+        .main-nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .main-nav ul li a:hover,
+        .main-nav ul li a.active {
+            color: #7B68EE;
+            border-bottom: 2px solid #7B68EE;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none; /* Hidden on larger screens */
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            position: relative;
+            z-index: 1001; /* Ensure it's above nav on mobile */
+            margin-left: auto; /* Push to the right on mobile */
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Dark Mode Toggle Button */
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5em; /* Default font size for Boxicons */
+            color: #fff; /* Default color for the icon */
+            margin-left: 20px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            color: #7B68EE;
+        }
+        .theme-toggle .bx { /* Ensure boxicons inside toggle inherit color */
+            font-size: 1.5em; /* Match parent font size */
+        }
+
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid #7B68EE;
+            object-fit: cover;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-content h2 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero-content .highlight {
+            color: #7B68EE;
+        }
+
+        .hero-content .tagline {
+            font-size: 1.5em;
+            color: #ccc;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .hero-content .description {
+            font-size: 1.1em;
+            color: #ddd;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Space between buttons */
+            flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+        }
+
+        .hero-buttons .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            min-width: 180px; /* Ensure buttons have a minimum width */
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: #7B68EE; /* Medium Slate Blue */
+            color: #fff;
+            border: 2px solid #7B68EE;
+        }
+
+        .btn-primary:hover {
+            background-color: #6a5acd; /* Darker Slate Blue */
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #7B68EE;
+            border: 2px solid #7B68EE;
+        }
+
+        .btn-secondary:hover {
+            background-color: #7B68EE;
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        /* Features Section Styles */
+        .features-section {
+            background-color: #fff;
+            padding: 80px 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .features-section h3 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        /* Animations for feature items and icons */
+        /* Keyframes for a stunning 3D-like hover effect */
+        @keyframes rotate3dHover {
+            0% {
+                transform: rotateY(0deg) scale(1);
+            }
+            50% {
+                transform: rotateY(15deg) scale(1.05);
+            }
+            100% {
+                transform: rotateY(0deg) scale(1);
+            }
+        }
+        
+        /* Animation keyframes for the pulse effect on icons */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1); /* Increased scale for a more pronounced pulse */
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .feature-item {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Apply the new 3D-like animation on hover */
+        .feature-item:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2); /* Deeper shadow on hover */
+            animation: rotate3dHover 1.5s ease-in-out infinite;
+        }
+
+        .feature-item .bx { /* Styling for Boxicons in feature items */
+            font-size: 4em; /* Large icon size */
+            color: #7B68EE; /* Color of the icons */
+            margin-bottom: 20px;
+            display: block; /* Make it a block element to apply margin */
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-item:hover .bx {
+            animation: pulse 1s ease-in-out infinite; /* Slower pulse for a smoother effect */
+        }
+
+        .feature-item h4 {
+            font-size: 1.5em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .feature-item p {
+            color: #555;
+            font-size: 1em;
+        }
+        
+        /* Dark mode overrides for animations */
+        body.dark-mode .feature-item:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+
+        body.dark-mode .feature-item p {
+            color: #cbd5e0; /* Light text for feature item descriptions */
+        }
+        
+        /* Footer Styles */
+        .main-footer {
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9em;
+        }
+
+        .main-footer .social-links {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .main-footer .social-links a {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            color: #fff; /* Default color for social icons */
+        }
+
+        .main-footer .social-links a:hover {
+            transform: translateY(-3px);
+            color: #7B68EE; /* Hover color for social icons */
+        }
+
+        .main-footer .social-links .bx { /* Boxicon social icons */
+            font-size: 2.5em; /* Large size for social icons */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-header .container {
+                flex-wrap: wrap; /* Allow wrapping for logo and nav */
+                justify-content: space-between;
+                padding: 0 20px; /* Add horizontal padding for smaller screens */
+            }
+
+            .main-header .logo {
+                order: 1; /* Keep logo first */
+            }
+
+            .theme-toggle {
+                order: 2; /* Place toggle next to logo */
+                margin-left: 0; /* Remove left margin */
+            }
+
+            .menu-toggle {
+                display: block; /* Show menu toggle button */
+                order: 3; /* Place menu toggle last in the row */
+            }
+
+            .main-nav {
+                width: 100%;
+                display: none; /* Hidden by default on mobile */
+                flex-direction: column;
+                background-color: #34495e; /* Darker background for mobile menu */
+                position: absolute;
+                top: 70px; /* Below header */
+                left: 0;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+                border-top: 1px solid rgba(255,255,255,0.1); /* Subtle separator */
+            }
+
+            .main-nav.active {
+                display: flex; /* Show when active */
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .main-nav ul li {
+                margin: 15px 0; /* More spacing for mobile links */
+            }
+
+            .main-nav ul li a {
+                font-size: 1.1em; /* Slightly larger text for readability */
+            }
+
+            .hero-content h2 {
+                font-size: 2.5em;
+            }
+
+            .hero-content .tagline {
+                font-size: 1.2em;
+            }
+
+            .hero-buttons {
+                flex-direction: column; /* Stack buttons vertically */
+                gap: 15px;
+            }
+
+            .hero-buttons .btn {
+                width: 90%; /* Make buttons wider on mobile */
+                max-width: 300px;
+            }
+            
+            .features-section h3 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1 class="logo"><a href="index.html">Bamanosi Ijeosiese</a></h1>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light and dark mode">
+                <i class='bx bx-sun'></i> <!-- Initial Sun icon -->
+            </button>
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <!-- Placeholder profile picture - replace with your own image URL -->
+                    <img src="ijeosiese.jpg" alt="Bamanosi Ijeosiese" class="profile-pic">
+                    <h2>Hi, I'm <span class="highlight">Bamanosi ijeosiese</span></h2>
+                    <p class="tagline">Passionate Web Developer | Creating Digital Experiences</p>
+                    <p class="description">
+                        Welcome to my portfolio! I build modern, responsive, and user-friendly websites. 
+                        Explore my projects to see how I can bring your ideas to life.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="projects.html" class="btn btn-primary">View My Work</a>
+                        <a href="contact.html" class="btn btn-secondary">Get in Touch</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features-section">
+            <div class="container">
+                <h3>Why Work With Me?</h3>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <i class='bx bx-mobile-alt'></i> <!-- Boxicon for Responsive Design -->
+                        <h4>Responsive Design</h4>
+                        <p>Websites that look great on any device, from desktops to smartphones.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class='bx bx-tachometer'></i> <!-- Boxicon for Performance -->
+                        <h4>Optimized Performance</h4>
+                        <p>Fast-loading sites built for an excellent user experience.</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class='bx bx-code-alt'></i> <!-- Boxicon for Clean Code -->
+                        <h4>Clean Code</h4>
+                        <p>Maintainable and scalable code for long-term project success.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Bamanosi Ijeosiese. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/Ijeosiese1" target="_blank" aria-label="GitHub"><i class='bx bxl-github'></i></a>
+                <a href="https://linkedin.com/in/IJEOSIESE BAMANOSI" target="_blank" aria-label="LinkedIn"><i class='bx bxl-linkedin-square'></i></a>
+                <a href="https://facebook.com/Itz B Ayo" target="_blank" aria-label="facebook"><i class='bx bxl-facebook'></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Embedded JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+
+            // Mobile menu toggle
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', () => {
+                    mainNav.classList.toggle('active');
+                });
+                // Close menu if a nav link is clicked (useful for multi-page where it navigates away)
+                mainNav.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (mainNav.classList.contains('active')) {
+                            mainNav.classList.remove('active');
+                        }
+                    });
+                });
+            }
+
+            // Dark mode toggle
+            if (themeToggle && body) {
+                // Function to set theme and update icon
+                const setTheme = (theme) => {
+                    if (theme === 'dark') {
+                        body.classList.add('dark-mode');
+                        themeToggle.innerHTML = '<i class="bx bx-moon"></i>'; // Moon icon for dark mode
+                        localStorage.setItem('theme', 'dark');
+                    } else {
+                        body.classList.remove('dark-mode');
+                        themeToggle.innerHTML = '<i class="bx bx-sun"></i>'; // Sun icon for light mode
+                        localStorage.setItem('theme', 'light');
+                    }
+                };
+
+                // Check local storage for theme preference on load
+                const savedTheme = localStorage.getItem('theme');
+                setTheme(savedTheme || 'light'); // Default to light if no preference saved
+
+                themeToggle.addEventListener('click', () => {
+                    if (body.classList.contains('dark-mode')) {
+                        setTheme('light');
+                    } else {
+                        setTheme('dark');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

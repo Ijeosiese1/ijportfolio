@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bamanosi Ijeosiese - Contact Me</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" type="image/png" sizes="32x32" href="ij tech.jpg">
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4; /* Light mode default */
+            color: #333; /* Light mode default text */
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for dark mode */
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-image: url("laptop-nature-concept.jpg"); /* Dynamic background image */
+            background-size: cover;
+            background-position: center;
+            background-color: #1a202c; /* Fallback for when image isn't loaded */
+            color: #e2e8f0; /* Light text for dark mode */
+        }
+
+        body.dark-mode .main-header {
+            background-color: #2d3748;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+        }
+
+        body.dark-mode .main-header .logo a,
+        body.dark-mode .main-nav ul li a { /* Text in header nav links */
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .menu-toggle span { /* Hamburger icon lines */
+            background-color: #e2e8f0;
+        }
+
+        body.dark-mode .main-nav {
+            background-color: #2d3748;
+        }
+
+        body.dark-mode .main-nav ul li a.active,
+        body.dark-mode .main-nav ul li a:hover {
+            color: #7B68EE;
+            border-color: #7B68EE;
+        }
+
+        /* Contact Page specific Dark Mode */
+        body.dark-mode .contact-section {
+            background-color: #262f3c; /* Slightly lighter dark background for section */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+        }
+
+        body.dark-mode .contact-section h2 {
+            color: #e2e8f0; /* Dark mode heading color */
+        }
+
+        body.dark-mode .contact-info p,
+        body.dark-mode .contact-info a {
+            color: #cbd5e0; /* Dark mode info text */
+        }
+
+        body.dark-mode .contact-form {
+            background-color: #4a5568; /* Darker background for form */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        body.dark-mode .contact-form input[type="text"],
+        body.dark-mode .contact-form input[type="email"],
+        body.dark-mode .contact-form textarea {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            border-color: #6a5acd;
+        }
+
+        body.dark-mode .contact-form input[type="text"]::placeholder,
+        body.dark-mode .contact-form input[type="email"]::placeholder,
+        body.dark-mode .contact-form textarea::placeholder {
+            color: #a0aec0;
+        }
+
+        body.dark-mode .main-footer {
+            background-color: #2d3748;
+            color: #a0aec0; /* Light text for footer */
+        }
+
+        body.dark-mode .main-footer .social-links .bx { /* Boxicon social icons in dark mode */
+            color: #a0aec0; /* A lighter gray for visibility */
+        }
+        
+        /* Basic Container for centering content */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* Header Styles */
+        .main-header {
+            background-color: #2c3e50; /* Dark blue/gray */
+            color: #fff;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex; /* Use flex for header items */
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: nowrap; /* Prevent wrapping on large screens */
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: nowrap; /* Prevent wrapping on large screens */
+        }
+
+        .logo {
+            margin: 0;
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+
+        .logo a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .logo a:hover {
+            color: #7B68EE; /* Medium Slate Blue */
+        }
+
+        /* Navigation Styles */
+        .main-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .main-nav ul li {
+            margin-left: 30px;
+        }
+
+        .main-nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+        }
+
+        .main-nav ul li a:hover,
+        .main-nav ul li a.active {
+            color: #7B68EE;
+            border-bottom: 2px solid #7B68EE;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none; /* Hidden on larger screens */
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            position: relative;
+            z-index: 1001; /* Ensure it's above nav on mobile */
+            margin-left: auto; /* Push to the right on mobile */
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Dark Mode Toggle Button */
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5em; /* Default font size for Boxicons */
+            color: #fff; /* Default color for the icon */
+            margin-left: 20px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            color: #7B68EE;
+        }
+        .theme-toggle .bx { /* Ensure boxicons inside toggle inherit color */
+            font-size: 1.5em; /* Match parent font size */
+        }
+
+        /* Contact Section Specific Styles */
+        .contact-section {
+            background-color: #fff;
+            padding: 100px 0 80px 0; /* Top padding to account for sticky header */
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            min-height: calc(100vh - 80px - 90px); /* Approx viewport height minus header and footer */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-section h2 {
+            font-size: 3em;
+            color: #2c3e50;
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr; /* Single column by default */
+            gap: 40px;
+            max-width: 900px;
+            width: 100%; /* Ensure it takes full width of its container */
+            padding: 0 20px;
+            margin: 0 auto;
+        }
+        
+        .contact-info {
+            text-align: left;
+            margin-bottom: 40px; /* Space before form on mobile */
+        }
+
+        .contact-info p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-info p .bx {
+            font-size: 1.5em;
+            color: #7B68EE;
+        }
+
+        .contact-info a {
+            color: #7B68EE;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #6a5acd;
+            text-decoration: underline;
+        }
+
+        .contact-form {
+            background-color: #f9f9f9;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+
+        .contact-form label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box; /* Include padding in width */
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1em;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-form input[type="text"]:focus,
+        .contact-form input[type="email"]:focus,
+        .contact-form textarea:focus {
+            border-color: #7B68EE;
+            box-shadow: 0 0 0 3px rgba(123, 104, 238, 0.2);
+            outline: none;
+        }
+
+        .contact-form textarea {
+            resize: vertical; /* Allow vertical resizing only */
+            min-height: 120px;
+        }
+
+        .contact-form button {
+            display: inline-block;
+            background-color: #7B68EE;
+            color: #fff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #6a5acd;
+            transform: translateY(-2px);
+        }
+
+        /* Footer Styles (Copied for consistency across pages) */
+        .main-footer {
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9em;
+        }
+
+        .main-footer .social-links {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .main-footer .social-links a {
+            display: inline-block;
+            transition: transform 0.3s ease;
+            color: #fff; /* Default color for social icons */
+        }
+
+        .main-footer .social-links a:hover {
+            transform: translateY(-3px);
+            color: #7B68EE; /* Hover color for social icons */
+        }
+
+        .main-footer .social-links .bx { /* Boxicon social icons */
+            font-size: 2.5em; /* Large size for social icons */
+        }
+
+        /* Responsive Design */
+        @media (min-width: 769px) {
+            .contact-grid {
+                grid-template-columns: 1fr 1.5fr; /* Info on left, form/chat on right */
+                align-items: start; /* Align top of grid items */
+            }
+            .contact-info {
+                margin-bottom: 0; /* Remove bottom margin on larger screens */
+            }
+        }
+
+
+        @media (max-width: 768px) {
+            .main-header .container {
+                flex-wrap: wrap; /* Allow wrapping for logo and nav */
+                justify-content: space-between;
+                padding: 0 20px; /* Add horizontal padding for smaller screens */
+            }
+
+            .main-header .logo {
+                order: 1; /* Keep logo first */
+            }
+
+            .theme-toggle {
+                order: 2; /* Place toggle next to logo */
+                margin-left: 0; /* Remove left margin */
+            }
+
+            .menu-toggle {
+                display: block; /* Show menu toggle button */
+                order: 3; /* Place menu toggle last in the row */
+            }
+
+            .main-nav {
+                width: 100%;
+                display: none; /* Hidden by default on mobile */
+                flex-direction: column;
+                background-color: #34495e; /* Darker background for mobile menu */
+                position: absolute;
+                top: 70px; /* Below header */
+                left: 0;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+                border-top: 1px solid rgba(255,255,255,0.1); /* Subtle separator */
+            }
+
+            .main-nav.active {
+                display: flex; /* Show when active */
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .main-nav ul li {
+                margin: 15px 0; /* More spacing for mobile links */
+            }
+
+            .main-nav ul li a {
+                font-size: 1.1em; /* Slightly larger text for readability */
+            }
+
+            /* Contact Page Specific Adjustments */
+            .contact-section {
+                padding-top: 80px; /* Adjust for header height */
+                padding-bottom: 50px;
+                min-height: auto; /* Allow height to adjust */
+            }
+            .contact-section h2 {
+                font-size: 2.5em;
+                margin-bottom: 30px;
+            }
+            .contact-info {
+                text-align: center;
+            }
+            .contact-info p {
+                justify-content: center; /* Center icons and text */
+            }
+            .contact-form {
+                padding: 25px; /* Reduce padding on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1 class="logo"><a href="index.html">Bamanosi Ijeosiese</a></h1>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light and dark mode">
+                <i class='bx bx-sun'></i> </button>
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2>Contact Me</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <p><i class='bx bx-envelope'></i> Email: <a href="mailto:bamanosiijeosiese@gmail.com">bamanosiijeosiese@gmail.com</a></p>
+                        <p><i class='bx bx-phone'></i> Phone: +2349150719215</p>
+                        <p><i class='bx bx-map-pin'></i> Location: Abeokuta, Ogun State, Nigeria</p>
+                        <p>
+                            Feel free to reach out through the form below!
+                            I'm always open to new opportunities and collaborations.
+                        </p>
+                    </div>
+
+                    <div class="contact-form">
+                        <form id="contactForm" action="https://formspree.io/f/mvgrlold" method="POST">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" placeholder="Your message..." required></textarea>
+
+                            <button type="submit">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Bamanosi Ijeosiese. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/Ijeosiese1" target="_blank" aria-label="GitHub"><i class='bx bxl-github'></i></a>
+                <a href="https://linkedin.com/in/IJEOSIESE BAMANOSI" target="_blank" aria-label="LinkedIn"><i class='bx bxl-linkedin-square'></i></a>
+                <a href="https://facebook.com/Itz B Ayo" target="_blank" aria-label="facebook"><i class='bx bxl-facebook'></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+
+            // Mobile menu toggle
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', () => {
+                    mainNav.classList.toggle('active');
+                });
+                // Close menu if a nav link is clicked (useful for multi-page where it navigates away)
+                mainNav.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (mainNav.classList.contains('active')) {
+                            mainNav.classList.remove('active');
+                        }
+                    });
+                });
+            }
+
+            // Dark mode toggle
+            if (themeToggle && body) {
+                // Function to set theme and update icon
+                const setTheme = (theme) => {
+                    const themeIcon = themeToggle.querySelector('.bx');
+                    if (theme === 'dark') {
+                        body.classList.add('dark-mode');
+                        themeIcon.classList.remove('bx-sun');
+                        themeIcon.classList.add('bx-moon'); // Moon icon for dark mode
+                        localStorage.setItem('theme', 'dark');
+                    } else {
+                        body.classList.remove('dark-mode');
+                        themeIcon.classList.remove('bx-moon');
+                        themeIcon.classList.add('bx-sun'); // Sun icon for light mode
+                        localStorage.setItem('theme', 'light');
+                    }
+                };
+
+                // Check local storage for theme preference on load
+                const savedTheme = localStorage.getItem('theme');
+                setTheme(savedTheme || 'light'); // Default to light if no preference saved
+
+                themeToggle.addEventListener('click', () => {
+                    if (body.classList.contains('dark-mode')) {
+                        setTheme('light');
+                    } else {
+                        setTheme('dark');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
